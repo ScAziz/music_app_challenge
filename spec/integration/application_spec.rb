@@ -69,7 +69,17 @@ describe Application do
         expect(response.body).to include("Wild Nothing")
       end 
     end
+ 
 
+    context "GET /albums/new" do 
+      it "returns the form page" do 
+        response = get('/albums/new')
+
+        expect(response.status).to eq(200)
+        expect(response.body).to include('<h1>Add an album</h1>')
+        expect(response.body).to include('<form action="/albums" method="POST">')
+      end 
+    end 
     
   end
 end
